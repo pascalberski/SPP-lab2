@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-/*static void benchmark_three_d_one(benchmark::State& state) {
+static void benchmark_three_d_one(benchmark::State& state) {
 	const auto number_threads = state.range(0);
 
 	const auto& keys = Holder::get_keys();
@@ -32,7 +32,12 @@ static void benchmark_three_f_one(benchmark::State& state) {
 BENCHMARK(benchmark_three_d_one)->Unit(benchmark::kMillisecond)->Arg(1);
 BENCHMARK(benchmark_three_d_one)->Unit(benchmark::kMillisecond)->Arg(2);
 BENCHMARK(benchmark_three_d_one)->Unit(benchmark::kMillisecond)->Arg(4);
+BENCHMARK(benchmark_three_d_one)->Unit(benchmark::kMillisecond)->Arg(8);
+BENCHMARK(benchmark_three_d_one)->Unit(benchmark::kMillisecond)->Arg(16);
+BENCHMARK(benchmark_three_d_one)->Unit(benchmark::kMillisecond)->Arg(32);
+BENCHMARK(benchmark_three_d_one)->Unit(benchmark::kMillisecond)->Arg(64);
+BENCHMARK(benchmark_three_d_one)->Unit(benchmark::kMillisecond)->Arg(96);
 
 BENCHMARK(benchmark_three_f_one)->Unit(benchmark::kMillisecond)->Arg(1);
 BENCHMARK(benchmark_three_f_one)->Unit(benchmark::kMillisecond)->Arg(2);
-BENCHMARK(benchmark_three_f_one)->Unit(benchmark::kMillisecond)->Arg(4);*/
+BENCHMARK(benchmark_three_f_one)->Unit(benchmark::kMillisecond)->Arg(4);

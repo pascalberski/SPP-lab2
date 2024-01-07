@@ -220,12 +220,3 @@ BENCHMARK(benchmark_two_e_one)->Unit(benchmark::kMillisecond)->Arg(16);
 BENCHMARK(benchmark_two_e_one)->Unit(benchmark::kMillisecond)->Arg(32);
 BENCHMARK(benchmark_two_e_one)->Unit(benchmark::kMillisecond)->Arg(64);
 BENCHMARK(benchmark_two_e_one)->Unit(benchmark::kMillisecond)->Arg(96);
-
-BENCHMARK(benchmark_two_f_one)->Unit(benchmark::kMillisecond)->Arg(1);
-BENCHMARK(benchmark_two_f_one)->Unit(benchmark::kMillisecond)->Arg(2);
-BENCHMARK(benchmark_two_f_one)->Unit(benchmark::kMillisecond)->Arg(4);
-BENCHMARK(benchmark_two_f_one)->Unit(benchmark::kMillisecond)->Arg(8);
-BENCHMARK(benchmark_two_f_one)->Unit(benchmark::kMillisecond)->Arg(16);
-BENCHMARK(benchmark_two_f_one)->Unit(benchmark::kMillisecond)->Arg(32);
-BENCHMARK(benchmark_two_f_one)->Unit(benchmark::kMillisecond)->Arg(64);
-BENCHMARK(benchmark_two_f_one)->Unit(benchmark::kMillisecond)->Arg(96);
