@@ -1,5 +1,6 @@
 #include "encryption/Key.h"
 #include <util/Hash.h>
+#include <cstring>
 
 Key::key_type Key::get_standard_key() noexcept {
 	auto key = key_type{};
