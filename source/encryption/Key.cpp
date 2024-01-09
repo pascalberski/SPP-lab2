@@ -1,6 +1,7 @@
 #include "encryption/Key.h"
 #include <util/Hash.h>
 #include <cstring>
+#include <exception>
 
 Key::key_type Key::get_standard_key() noexcept {
 	auto key = key_type{};
@@ -82,24 +83,31 @@ Key::key_type Key::find_key(std::span<const key_type> keys, std::uint64_t target
     return key_type{};
 }
 
+
+
 Key::key_type Key::find_key_parallel(std::span<const key_type> keys, std::uint64_t target_hash, int num_threads) {
-    key_type found_key;
-    bool key_found = false;
 
-#pragma omp parallel for num_threads(num_threads)
-    for (std::size_t i = 0; i < keys.size(); ++i) {
-        if (key_found) break;
+    bool found = false;
+    Key::key_type found_key;
 
-        if (Key::hash(keys[i]) == target_hash) {
+#pragma omp parallel for shared(found, found_key)
+    for (size_t i = 0; i < keys.size(); ++i) {
+        if (!found) {
+            auto hashed_key = Key::hash(keys[i]);
+            if (hashed_key == target_hash) {
 #pragma omp critical
-            {
-                if (!key_found) {
-                    found_key = keys[i];
-                    key_found = true;
+                {
+                    if (!found) {
+                        found = true;
+                        found_key = keys[i];
+                    }
                 }
             }
         }
     }
 
-    return found_key;
+    if (found) {
+        return found_key;
+    }
+    return Key::key_type{};
 }
